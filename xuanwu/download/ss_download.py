@@ -8,10 +8,10 @@
 
 import urllib2
 import urlparse
-import xuanwu.tool.ua_list as ua_list
+import xuanwu.download.http.ua_list as ua_list
 from random import choice
 import xuanwu.tool.config as config
-import xuanwu.tool.proxy as proxy_tool
+import xuanwu.download.http.proxy as proxy_tool
 import time
 
 
@@ -39,6 +39,6 @@ def download(url, proxy=proxy_tool.get_proxy(), num_retries=config.NUM_RETRIES):
             proxy_tool.delete_proxy(proxy)
         html = None
         if num_retries > 0:
-            if hasattr(e, 'code') and 500 <= e.code < 600:
+            if hasattr(e, 'code') and 400 <= e.code < 600:
                 return download(url, choice(ua_list.UA_LIST), num_retries - 1)
     return html
