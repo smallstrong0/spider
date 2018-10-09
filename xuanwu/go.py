@@ -8,8 +8,8 @@
 
 import os
 import time
-import download.ss_download as download
-import parser.xcf_parser as parser
+import xuanwu.download.ss_download as download
+import xuanwu.parser.xcf_parser as parser
 import xuanwu.pipeline.export_to_redis as export_redis
 import xuanwu.download.speed as speed
 
