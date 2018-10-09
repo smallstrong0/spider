@@ -6,10 +6,6 @@
 # @File    : xcf_parser.py
 # @Software: PyCharm
 
-import sys
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 from bs4 import BeautifulSoup
 import xuanwu.pipeline.export_to_output as export_data
