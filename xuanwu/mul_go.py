@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2018/10/9 18:31
 # @Author  : SmallStrong
-# @Des     : 
+# @Des     : 开启系统多进程爬取
 # @File    : mul_go.py
 # @Software: PyCharm
 

@@ -15,9 +15,9 @@ import xuanwu.download.speed as speed
 
 redis_cli = export_redis.cli()
 
-BASE_URL = 'http://m.xiachufang.com'
-WEB_BASE_URL = 'https://xiachufang.com'
-CATEGORY_URL = 'https://www.xiachufang.com/category/'
+BASE_URL = 'http://m.xiachufang.com'  # 移动端的接口
+WEB_BASE_URL = 'https://xiachufang.com'  # 网页端接口
+CATEGORY_URL = 'https://www.xiachufang.com/category/'  # 总分类页面
 
 
 def get_category():
@@ -52,9 +52,14 @@ def get_recipe():
 
 
 def get_content():
-    # all_recipe_dic = redis_cli.hgetall('recipe_dic')
-    # for recipe in all_recipe_dic:
-    #     redis_cli.sadd('recipe_set', recipe)
+    """
+    先创建一个set集合 然后从set中pop元素出来
+
+    :return:
+    """
+    all_recipe_dic = redis_cli.hgetall('recipe_dic')
+    for recipe in all_recipe_dic:
+        redis_cli.sadd('recipe_set', recipe)
 
     while 1:
         recipe = redis_cli.spop('recipe_set')
@@ -67,14 +72,14 @@ def get_content():
                 else:
                     redis_cli.hmset(recipe, content_dic)
             else:
-                redis_cli.hmset('error' + recipe, {})
+                redis_cli.hmset('error' + recipe, {'error': 'error happend'})
         else:
             break
 
 
 def go():
-    # get_category()
-    # get_recipe()
+    get_category()
+    get_recipe()
     get_content()
 
 

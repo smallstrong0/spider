@@ -16,6 +16,11 @@ redis_cli = export_redis.cli()
 
 
 def get_category_dic(content):
+    """
+    获取分类列表
+    :param content:
+    :return:
+    """
     result_dic = {}
     result_status = {}
     soup = BeautifulSoup(content, 'html.parser')
@@ -31,6 +36,11 @@ def get_category_dic(content):
 
 
 def get_recipe_list(category_list_content):
+    """
+    获取单个分类的菜品列表
+    :param category_list_content:
+    :return:
+    """
     recipe_dic = {}
     soup = BeautifulSoup(category_list_content, 'html.parser')
     links = soup.find_all("a")
@@ -44,9 +54,7 @@ def get_recipe_list(category_list_content):
 
 def get_content(recipe_content):
     """
-    //*[@id="site-body"]/div
-    //*[@id="site-body"]/div/div[1]
-    //*[@id="site-body"]/div/div[2]
+    菜品内容
     :param recipe_content:
     :return:
     """
