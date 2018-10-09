@@ -7,5 +7,7 @@
 # @Software: PyCharm
 
 
-DELAY_TIME = 0.2
+DELAY_TIME = 0.5
 NUM_RETRIES = 5
+NS = 'xcf'
+
