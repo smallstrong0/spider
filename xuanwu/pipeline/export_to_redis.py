@@ -14,8 +14,13 @@ NS = xuanwu.tool.config.NS
 
 
 class cli:
-    def __init__(self):
-        self.__cli = redis.Redis()
+    def __init__(self, mode=0):
+        if mode == 0:
+            # 连接本机redis服务
+            self.__cli = redis.Redis()
+        else:
+            # 连接redis服务器（一般设置密码，且必须开启远程连接权限）
+            self.__cli = redis.StrictRedis(host='127.0.0.1', port=6379, db=0, password='password')
 
     def exists(self, k):
         if self.__cli is None:
