@@ -34,14 +34,17 @@ def go():
         #     driver.execute_script(js)
         #     time.sleep(3)
         ul = driver.find_element_by_xpath('//*[@id="juejin"]/div[2]/main/div/div[2]/ul')
-        print(len(ul))
-
         lis = ul.find_elements_by_xpath('li')
         print len(lis)  # 有多少个li
         resutl_dic = {}
-        for i in lis:
-            pass
+        for i in range(len(lis) - 1):
+            li = lis[i]
+            a = li.find_element_by_xpath(
+                '//*[@id="juejin"]/div[2]/main/div/div[2]/ul/li[{}]/div/div/a/div/div/div[2]/a'.format(i + 1))
 
+            print(a.text)
+            print(a.get_attribute('href'))
+        
     driver.quit()
 
 
