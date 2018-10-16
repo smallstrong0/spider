@@ -44,7 +44,7 @@ def go():
 
             print(a.text)
             print(a.get_attribute('href'))
-        
+
     driver.quit()
 
 

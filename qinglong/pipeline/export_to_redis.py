@@ -8,9 +8,9 @@
 
 import redis
 
-import qinglong.config
+import xuanwu.tool.config
 
-NS = qinglong.config.NS
+NS = xuanwu.tool.config.NS
 
 
 class cli:
