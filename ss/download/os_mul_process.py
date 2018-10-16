@@ -2,12 +2,11 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2018/10/9 08:37
 # @Author  : SmallStrong
-# @Des     : 
-# @File    : speed.py
+# @Des     : 系统级别的多进程任务
+# @File    : os_mul_process.py
 # @Software: PyCharm
 
 import os
-import time
 
 PROCESS_LIMIT_NUM = 10
 

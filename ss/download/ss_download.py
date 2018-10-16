@@ -8,10 +8,10 @@
 
 import urllib2
 import urlparse
-import qinglong.download.http.ua_list as ua_list
+import ss.download.http.ua_list as ua_list
 from random import choice
-import qinglong.config as config
-import qinglong.download.http.proxy as proxy_tool
+import ss.config as config
+import ss.download.http.proxy as proxy_tool
 import time
 
 
@@ -27,7 +27,6 @@ def download(url, proxy=proxy_tool.get_proxy(), num_retries=config.NUM_RETRIES):
     print 'Downloading:{}'.format(url)
     headers = {
         'User-agent': choice(ua_list.UA_LIST),
-        'X-Juejin-Src': 'web'
     }
     request = urllib2.Request(url, headers=headers)
     opener = urllib2.build_opener()

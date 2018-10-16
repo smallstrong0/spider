@@ -11,7 +11,7 @@ import os
 import traceback
 import qinglong.download.ss_download as download
 import qinglong.config as config
-import killer.common.func as func
+import ss.common.func as func
 import qinglong.pipeline.export_to_redis as export_redis
 
 redis_cli = export_redis.cli()
