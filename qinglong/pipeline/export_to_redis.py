@@ -8,9 +8,9 @@
 
 import redis
 
-import xuanwu.tool.config
+import qinglong.config
 
-NS = xuanwu.tool.config.NS
+NS = qinglong.config.NS
 
 
 class cli:
@@ -229,11 +229,11 @@ class cli:
         else:
             return self.__cli.smembers(NS + ':' + k)
 
-    def srem(self, k):
+    def srem(self, k, *n):
         if self.__cli is None:
             return None
         else:
-            return self.__cli.srem(NS + ':' + k)
+            return self.__cli.srem(NS + ':' + k, *n)
 
     def pfadd(self, n, *k):
         if self.__cli is None:
@@ -246,3 +246,9 @@ class cli:
             return False
         else:
             return self.__cli.pfcount(NS + ':' + n)
+
+    def lpush(self, n, *k):
+        if self.__cli is None:
+            return False
+        else:
+            return self.__cli.lpush(NS + ':' + n, *k)
