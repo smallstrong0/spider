@@ -60,13 +60,23 @@ def write_to_xls(result_list=None, columns_name_list=None, dic_key_list=None,
     wbk.save('{}{}.xls'.format(path, file_name))
 
 
-def write_as_txt():
-    pass
+def write_as_txt(file_name, data, path='{}/output/'.format(os.getcwd())):
+    """
+    数据写入txt
+    :param file_name: 文件名
+    :param data: 写入数据
+    :param path: 文件路径 默认output目录下
+    :return:
+    """
+    f = file("{}{}.txt".format(path, file_name), "a+")  # 以追加的方式
+    f.write(data)
+    f.write("\n")  # 写完通过\n进行换行
 
 
 def test():
     # write_as_py('default_py', {'a': 1})
     # write_to_xls([{'a': 1, 'b': '222'}], ['测试1', '测试2'], ['a', 'b'])
+    # write_as_txt('default_txt', data=func.sort_serialize({'1': 11, '2': 22}))
     pass
 
 
