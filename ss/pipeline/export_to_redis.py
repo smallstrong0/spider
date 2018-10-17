@@ -10,7 +10,7 @@ import redis
 
 import ss.config
 
-NS = ss.config.NS
+NS = ss.config.NS  # redis存储key前缀
 
 
 class cli:
