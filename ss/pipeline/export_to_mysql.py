@@ -20,7 +20,7 @@ MYSQL = {
     'PORT': '3306',
     'USER': 'root',
     'PASSWORD': 'password',
-    'DATABASE': 'da_name',
+    'DATABASE': 'db_name',
 }
 
 Base = declarative_base()
