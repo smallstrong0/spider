@@ -54,10 +54,8 @@ class cli:
 def test(bean):
     rds = cli()
     session = rds.session
-
-    @rds.con_commit_close
-    def add():
-        session.add_all([bean])
+    session.add(bean)
+    session.commit()
 
 
 ############################
@@ -76,4 +74,4 @@ def create_table():
 
 if __name__ == '__main__':
     create_table()
-    test(User(id=10, name='small'))
+    test(User(user_id=10, name='small'))
