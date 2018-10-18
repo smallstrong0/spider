@@ -7,8 +7,9 @@
 # @Software: PyCharm
 
 import os
+import ss.config
 
-PROCESS_LIMIT_NUM = 10
+PROCESS_LIMIT_NUM = ss.config.PROCESS_LIMIT_NUM
 
 
 def check_process_num(process_name, limit_num=PROCESS_LIMIT_NUM):
