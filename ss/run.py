@@ -13,7 +13,7 @@ import config
 
 def go():
     for i in range(config.PROCESS_LIMIT_NUM):
-        speed.dash(os.getcwd() + '/download/ss_coroutine.py', config.LOG_FILE_NAME)
+        speed.dash(os.getcwd() + '/download/ss_coroutine.py', '{}_{}'.format(config.LOG_FILE_NAME, i))
 
 
 if __name__ == '__main__':

@@ -35,5 +35,6 @@ def dash(file_path, log_file_name):
     :param log_file_name:
     :return:
     """
-    cmd = 'nohup python {}  1>>{}.log 2>>{}.err &'.format(file_path, log_file_name, log_file_name)
+    cmd = 'nohup python {}  1>>{}.log 2>>{}.err &'.format(file_path, os.getcwd() + '/log/output/' + log_file_name,
+                                                          os.getcwd() + '/log/output/' + log_file_name)
     os.system(cmd)
