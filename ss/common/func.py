@@ -14,7 +14,6 @@ import urllib
 import string
 import sys
 import re
-import pinyin
 import copy
 
 
@@ -316,13 +315,6 @@ def d_value_day(ts, now_ts=get_ts()):
     return (d2 - d1).days
 
 
-def is_new_channel(ctime):
-    if ctime >= 1494856129:
-        return True
-    else:
-        return False
-
-
 def GenPassword(length=8, chars=string.ascii_letters + string.digits):
     return ''.join([random.choice(chars) for i in range(length)])
 
@@ -337,9 +329,9 @@ def get_weekenk_time(ctime, ts):
     :param ts:
     :return: 输出ctime所在周截止到ts 的周末时间
     '''
-    saturday_start_stamp, sunday_end_time = get_weekenk_full_stamp(ctime)
+    saturday_start_stamp, sunday_end_time = get_weekend_full_stamp(ctime)
     if ctime <= saturday_start_stamp:
-        if ts <= sunday_end_time and ts > saturday_start_stamp:
+        if sunday_end_time >= ts > saturday_start_stamp:
             return ts - saturday_start_stamp
         elif ts <= saturday_start_stamp:
             return 0
@@ -352,7 +344,7 @@ def get_weekenk_time(ctime, ts):
             return sunday_end_time - ctime
 
 
-def get_weekenk_full_stamp(ctime):
+def get_weekend_full_stamp(ctime):
     '''
     :param ctime: 传入 一个时间轴
     :return:   输出 这个时间轴对应的这个周的周末的 起始时间自 和结束时间轴
@@ -462,16 +454,6 @@ def analysis_year_month(y_m_str):
         else:
             year, month = 0, 0
     return year, month
-
-
-def to_pinyin(var_str):
-    if isinstance(var_str, str):
-        if var_str == 'None':
-            return ""
-        else:
-            return pinyin.get(var_str, format='strip', delimiter="")
-    else:
-        return '类型不对'
 
 
 def random_int(min=0, max=10000):
