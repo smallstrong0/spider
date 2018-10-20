@@ -13,6 +13,9 @@ from random import choice
 import ss.config as config
 import ss.download.http.proxy as proxy_tool
 import time
+from ss.common.ss_log import LogHandler
+
+log = LogHandler('download')
 
 
 def download(url, proxy=proxy_tool.get_proxy(), num_retries=config.NUM_RETRIES):
@@ -24,7 +27,7 @@ def download(url, proxy=proxy_tool.get_proxy(), num_retries=config.NUM_RETRIES):
     :return:
     """
     time.sleep(config.DELAY)
-    print 'Downloading:{}'.format(url)
+    log.info('Downloading:{}'.format(url))
     headers = {
         'User-agent': choice(ua_list.UA_LIST),
     }
@@ -36,7 +39,7 @@ def download(url, proxy=proxy_tool.get_proxy(), num_retries=config.NUM_RETRIES):
     try:
         html = urllib2.urlopen(request).read()
     except urllib2.URLError as e:
-        print 'Download error:{}'.format(e)
+        log.error('Download error:{}'.format(e))
         if proxy:
             proxy_tool.delete_proxy(proxy)
         html = None
