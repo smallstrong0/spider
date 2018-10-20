@@ -6,7 +6,10 @@
 # @File    : run.py
 # @Software: PyCharm
 
+import sys
 import os
+
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
 import ss.download.os_mul_process as speed
 import config
 
