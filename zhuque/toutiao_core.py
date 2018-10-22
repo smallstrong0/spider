@@ -6,12 +6,26 @@
 # @File    : toutiao_core.py
 # @Software: PyCharm
 
+import os
 import math
 import time
 import hashlib
+import json
+import execjs
 
 
-def getASCP():
+def get_sign_params():
+    f = open(r"{}/sign.js".format(os.getcwd()), 'r')
+    line = f.readline()
+    htmlstr = ''
+    while line:
+        htmlstr = htmlstr + line
+        line = f.readline()
+    ctx = execjs.compile(htmlstr)
+    return ctx.call('get_as_cp_signature')
+
+
+def get_as_cp():
     t = int(math.floor(time.time()))
     e = hex(t).upper()[2:]
     m = hashlib.md5()
