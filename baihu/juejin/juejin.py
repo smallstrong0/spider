@@ -7,11 +7,6 @@
 # @Software: PyCharm
 
 import requests
-import re
-import json
-import math
-import random
-import time
 import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -19,8 +14,10 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)  ###禁止提
 
 
 class JueJin(object):
-    def __init__(self, url):
-        self.url = url
+    def __init__(self, account, password):
+        self.url = u'https://juejin.im/auth/type/phoneNumber'
+        self.account = account
+        self.password = password
         self.session = requests.session()
         headers = {
             'Accept': '*/*',
@@ -34,10 +31,10 @@ class JueJin(object):
             'Pragma': 'no-cache',
             'Host': 'juejin.im',
         }
-        self.s.headers.update(headers)
+        self.session.headers.update(headers)
 
     def download(self):  # 获取数据
-        req = self.session.post(url=self.url, data=json.dumps({"phoneNumber": "", "password": ""}),
+        req = self.session.post(url=self.url, data=json.dumps({"phoneNumber": self.account, "password": self.password}),
                                 verify=False)
         j = json.loads(req.text)
         self.parser(j)
@@ -50,7 +47,8 @@ class JueJin(object):
 
 
 if __name__ == '__main__':
-    url = u'https://juejin.im/auth/type/phoneNumber'
-    juejin = JueJin(url=url)
+    account = 18888888888
+    password = u'password'
+    juejin = JueJin(account=account, password=password)
     juejin.download()
     juejin.closes()
