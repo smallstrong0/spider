@@ -20,16 +20,24 @@ class Zhihu(object):
         self.password = password
         self.session = requests.session()
         headers = {
+            ':authority': "www.zhihu.com",
+            ':method': "POST",
+            ':path': "/api/v3/oauth/sign_in",
+            ':scheme': "https",
             'Accept': '*/*',
-            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Content-Type': 'application/json',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; rv:11.0) like Gecko',
-            'Connection': 'Keep-Alive',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            'cache-control': 'no-cache',
+            'content-type': 'application/x-www-form-urlencoded',
             'origin': 'https://www.zhihu.com',
-            'Referer': 'https://www.zhihu.com/signup?next=%2F',
             'Pragma': 'no-cache',
-            'Host': 'https://www.zhihu.com',
+            'Referer': 'https://www.zhihu.com/signup?next=%2F',
+            'x-ab-param': '',  # TODO
+            'x-requested-with': 'fetch',
+            'x-udid': '',  # TODO
+            'x-xsrftoken': '',  # TODO
+            'x-zse-83': '',  # TODO
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; rv:11.0) like Gecko',
         }
         self.session.headers.update(headers)
 
