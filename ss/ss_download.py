@@ -8,12 +8,12 @@
 
 import urllib2
 import urlparse
-import ss.download.http.ua_list as ua_list
+import ua_list as ua_list
 from random import choice
-import ss.config as config
-import ss.download.http.proxy as proxy_tool
+import config as config
+import proxy as proxy_tool
 import time
-from ss.common.ss_log import LogHandler
+from ss_log import LogHandler
 
 log = LogHandler('download')
 

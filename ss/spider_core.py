@@ -6,7 +6,7 @@
 # @File    : spider_core.py
 # @Software: PyCharm
 
-import ss.config
+import config
 import random
 import time
 
@@ -40,4 +40,4 @@ def pipeline():
 
 
 def set_process_end():
-    ss.config.FLAG = False
+    config.FLAG = False

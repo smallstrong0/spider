@@ -6,7 +6,7 @@
 # @File    : export_to_local.py
 # @Software: PyCharm
 
-import ss.common.func as func
+import func
 import xlwt
 import os
 

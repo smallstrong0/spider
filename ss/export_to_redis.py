@@ -8,9 +8,9 @@
 
 import redis
 
-import ss.config
+import config
 
-NS = ss.config.NS  # redis存储key前缀
+NS = config.NS  # redis存储key前缀
 
 
 class cli:

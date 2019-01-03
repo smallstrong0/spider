@@ -10,18 +10,18 @@ import os
 
 # 被逼无奈
 sys.path.append(os.getcwd().replace('/ss', ''))
-from ss.spider_core import go
-from ss.common.func import exe_time
+from spider_core import go
+from func import exe_time
 from gevent import monkey, pool
-import ss.config
+import config
 
 monkey.patch_all()
 
 
 @exe_time
 def main():
-    p = pool.Pool(ss.config.COROUTINE_LIMIT_NUM)
-    while ss.config.FLAG:
+    p = pool.Pool(config.COROUTINE_LIMIT_NUM)
+    while config.FLAG:
         p.spawn(go)
 
 

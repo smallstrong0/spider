@@ -9,7 +9,7 @@
 import os
 import logging
 from logging.handlers import TimedRotatingFileHandler
-import ss.config
+import config
 
 CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 ROOT_PATH = os.path.join(CURRENT_PATH, os.pardir)
@@ -21,7 +21,7 @@ class LogHandler(logging.Logger):
     LogHandler
     """
 
-    def __init__(self, name, level=ss.config.LOG_LEVEL, stream=True, file=True):
+    def __init__(self, name, level=config.LOG_LEVEL, stream=True, file=True):
         self.name = name
         self.level = level
         logging.Logger.__init__(self, self.name, level=level)
@@ -30,7 +30,7 @@ class LogHandler(logging.Logger):
         if file:
             self.__setFileHandler__()
 
-    def __setFileHandler__(self, level=ss.config.LOG_LEVEL):
+    def __setFileHandler__(self, level=config.LOG_LEVEL):
         """
         set file handler
         :param level:
